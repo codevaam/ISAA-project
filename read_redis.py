@@ -25,7 +25,7 @@ def subscription_loop():
 
         while True:
             # print("ran")
-            message = conn.xread({'SAURAV': b"0-0"})
+            message = conn.xread({stream_name: 'SAURAV'}, None, 0)
             # message = sub.get_message()
             # print(message)
             if message and message["type"] == "message":
