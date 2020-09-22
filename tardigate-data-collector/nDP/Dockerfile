@@ -14,5 +14,5 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["./node_modules/nodemon/bin/nodemon.js","data_collector1"]
+# CMD ["./node_modules/nodemon/bin/nodemon.js","data_collector1"]
 
