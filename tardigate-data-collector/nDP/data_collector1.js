@@ -13,7 +13,7 @@ const writeThroughCache = () =>{
             fs.createReadStream("./test.csv")
             .on('data',(d)=>{
                 console.log(d)
-                client.xadd("SAURAV","*","csv",d);
+                client.xadd("DATASTREAM","*","csv",d);
             })
             .on('end',()=>{
                 resolve("done")

@@ -19,13 +19,13 @@ def flow_classify(filename):
 def subscription_loop():
 
     # sub = conn.pubsub()
-    # sub.subscribe("SAURAV")
+    # sub.subscribe("DATASTREAM")
 
     try:
 
         # while True:
             # print("ran")
-        message = conn.xread({'SAURAV': b"0-0"})
+        message = conn.xread({'DATASTREAM': b"0-0"})
         print(message[1][1])
             # message = sub.get_message()
             # print(message)

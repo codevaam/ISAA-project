@@ -56,5 +56,5 @@ def flow_classify(filename):
     print(predict_output(filename))
 
 
-df_data_list = read_redis_stream("SAURAV", [])
+df_data_list = read_redis_stream("DATASTREAM", [])
 flow_classify(df_data_list)
