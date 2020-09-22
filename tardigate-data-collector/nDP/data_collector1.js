@@ -7,11 +7,12 @@ const client = redis.createClient();
 
 const writeThroughCache = () =>{
     return new Promise((resolve,reject)=>{
-        exec("sudo ./nDPI/example/ndpiReader -C test.csv -P 4:8:10:128:25 -i wlo1 -s 10",(err,stdout,stderr)=>{
-            console.log("test")
+        exec("sudo ndpiReader -C test.csv -P 4:8:10:128:25 -i wlo1 -s 10",(err,stdout,stderr)=>{
+            console.log("start")
             let i = 0;
             fs.createReadStream("./test.csv")
             .on('data',(d)=>{
+                console.log(d)
                 client.xadd("SAURAV","*","csv",d);
             })
             .on('end',()=>{

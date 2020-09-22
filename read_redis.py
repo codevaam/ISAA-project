@@ -1,11 +1,12 @@
 import redis
 import base64
 from finalcheck import predict_output
-
-conn = redis.StrictRedis(host='192.168.43.23', port=6379)
+import time
+conn = redis.Redis(host='localhost', port=6379)
 
 
 def read_and_decode_from_redis(msg):
+    print(msg)
     decoded_fname = base64.b64decode(msg)
     with open("test.csv", "wb") as f:
         f.write(decoded_fname)
@@ -17,16 +18,21 @@ def flow_classify(filename):
 
 def subscription_loop():
 
-    sub = conn.pubsub()
-    sub.subscribe("test")
+    # sub = conn.pubsub()
+    # sub.subscribe("SAURAV")
 
     try:
 
         while True:
-            message = sub.get_message()
+            # print("ran")
+            message = conn.xread({'SAURAV': b"0-0"})
+            # message = sub.get_message()
+            # print(message)
             if message and message["type"] == "message":
                 read_and_decode_from_redis(message['data'])
-                flow_classify("test.csv")
+    # while True:
+    #     time.sleep(10)
+    #     flow_classify("./tardigate-data-collector/nDP/test.csv")
 
     except Exception as e:
         print(e)

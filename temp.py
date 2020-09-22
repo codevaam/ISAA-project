@@ -4,7 +4,7 @@ from finalcheck import predict_output
 import os
 import pandas as pd
 
-conn = redis.Redis(host='192.168.43.23', port=6379)
+conn = redis.Redis(host='192.168.1.12', port=6379)
 
 
 def get_id(xread_object):
@@ -50,7 +50,7 @@ def read_redis_stream(stream_name, data):
 
 
 def make_df(data, headers):
-
+    pass
 
 def flow_classify(filename):
     print(predict_output(filename))
