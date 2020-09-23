@@ -32,7 +32,7 @@ def subscription_loop():
         read_and_decode_from_redis(message)
     # while True:
     #     time.sleep(10)
-        flow_classify("test.csv")
+        flow_classify("tardigate-data-collector/nDP/test.csv")
 
     except Exception as e:
         print(e)

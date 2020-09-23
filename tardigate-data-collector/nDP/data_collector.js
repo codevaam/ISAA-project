@@ -7,8 +7,8 @@ const client = redis.createClient();
 
 const collectAndEncode = () =>{
     setInterval(()=>{
-        exec("sudo ./nDPI/example/ndpiReader -C test.csv -P 4:8:10:128:25 -i wlo1 -s 10",(err,stdout,stderr)=>{
-            let data = fs.readFileSync("./test.csv")
+        exec(`sudo ./nDPI/example/ndpiReader -C test.csv -P 4:8:10:128:25 -i $(iw dev | awk '$1=="Interface"{print $2}') -s 10`,(err,stdout,stderr)=>{
+            let data = fs.readFileSync("test.csv")
 
             client.publish("test", Buffer.from(data).toString('base64'));
             console.log('test');

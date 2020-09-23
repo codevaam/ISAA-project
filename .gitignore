@@ -6,3 +6,4 @@ polarproxy/
 *.zip
 *.csv
 nDPI/
+env
