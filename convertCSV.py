@@ -13,6 +13,6 @@ def replaceNull(filepath):
                             x = row[i] = 0
         rows.append((','.join(str(x) for x in row)).split(','))
         # print(','.join(str(x) for x in row))
-    with open(filepath, 'w', newline='') as file:
+    with open('test.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(rows)
