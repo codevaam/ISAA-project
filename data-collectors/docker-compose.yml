@@ -1,7 +1,5 @@
 version: '3'
-
 services:
-
   # ntopng:
   #   image: vimagick/ntopng
   #   command: --community -d /var/lib/ntopng -i wlo1 -r 127.0.0.1:6379@0 -w 0.0.0.0:3000
@@ -16,27 +14,19 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./data/redis:/data
+      - ./redis_data:/data
     restart: unless-stopped
     environment:
         redis_host: "${redis_host}"
         redis_port: "${redis_port}"
  
-  # nDPI:
-  #   image: ndpi
-  #   build: ./nDP
-  #   container_name: ndpi
-  #   command: sh -c "cd nDP && npm install && ./node_modules/nodemon/bin/nodemon.js ./nDP/data_collector1.js"
-  #   network_mode: host
-  #   volumes: 
-  #     - .:/usr/src/app
-  
   influxdb:
     image: influxdb
     ports:
       - "8086:8086"
     volumes:
-      - .:/var/lib/influxdb
+      - ./influxdb_data:/var/lib/influxdb
+
   chronograf:
     image: chronograf
     command: --influxdb-url=http://influxdb:8086
