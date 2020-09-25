@@ -150,4 +150,3 @@ class Addon:
 
 
 addons = [Addon(lambda: File('output.pcap'))]
-#addons = [Addon(lambda: Pipe('weer -'))]

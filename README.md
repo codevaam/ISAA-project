@@ -1,6 +1,4 @@
-# Tardigate
-
-![Tardigate](logo.png)
+# ISAA Project
 
 Predict Output
 ```
