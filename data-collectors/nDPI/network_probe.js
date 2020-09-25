@@ -16,10 +16,10 @@ const argv = yargs
     .argv;
 const writeThroughCache = () =>{
     return new Promise((resolve,reject)=>{
-        exec(`sudo ndpiReader -C test.csv -P 4:8:10:128:25 -i ${argv.interface} -s 10`,(err,stdout,stderr)=>{
+        exec(`sudo ndpiReader -C debug.csv -P 4:8:10:128:25 -i ${argv.interface} -s 10`,(err,stdout,stderr)=>{
             console.log("start")
             let i = 0;
-            fs.createReadStream("test.csv")
+            fs.createReadStream("debug.csv")
             .on('data',(d)=>{
                 console.log(d)
                 client.xadd("DATASTREAM","*","csv",d);

@@ -6,8 +6,8 @@ conn = redis.Redis(host='localhost', port=6379)
 
 
 def read_and_decode_from_redis(msg):
-    # print(msg)
-    with open("test.csv", "wb") as f:
+    python('Updating File')
+    with open("debug.csv", "wb") as f:
         f.write(msg[0][1][-1][1][b'csv'])
 
 
@@ -16,24 +16,12 @@ def flow_classify(filename):
 
 
 def subscription_loop():
-
-    # sub = conn.pubsub()
-    # sub.subscribe("DATASTREAM")
-
     try:
-
-        # while True:
-            # print("ran")
-        message = conn.xread({'DATASTREAM': b"0-0"})
-        # print(message[0][1][-1][1][b'csv'])
-            # message = sub.get_message()
-            # print(message)
-            # if message and message["type"] == "message":
-        read_and_decode_from_redis(message)
-    # while True:
-    #     time.sleep(10)
-        flow_classify("tardigate-data-collector/nDP/test.csv")
-
+        while True:
+            message = conn.xread({'DATASTREAM': b"0-0"})
+            read_and_decode_from_redis(message)
+            time.sleep(10)
+            flow_classify("debug.csv")
     except Exception as e:
         print(e)
 

@@ -16,9 +16,6 @@ services:
     volumes:
       - ./redis_data:/data
     restart: unless-stopped
-    environment:
-        redis_host: "${redis_host}"
-        redis_port: "${redis_port}"
  
   influxdb:
     image: influxdb

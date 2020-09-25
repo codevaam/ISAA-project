@@ -6,3 +6,4 @@ polarproxy/
 *.zip
 *.csv
 env
+*_data
