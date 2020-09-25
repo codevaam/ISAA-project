@@ -6,7 +6,7 @@ conn = redis.Redis(host='localhost', port=6379)
 
 
 def read_and_decode_from_redis(msg):
-    python('Updating File')
+    print('Updating File')
     with open("debug.csv", "wb") as f:
         f.write(msg[0][1][-1][1][b'csv'])
 
