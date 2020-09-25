@@ -10,8 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "nodemon": "^2.0.3",
     "redis": "^2.8.0",
     "redis-streams": "^1.1.0",
-    "nodemon": "^2.0.3"
+    "yargs": "^16.0.3"
   }
 }

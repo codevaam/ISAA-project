@@ -1,13 +1,22 @@
 const {exec}  = require('child_process')
 const redis = require('redis')
 const fs = require('fs')
-require('dotenv').config()
+const yargs = require('yargs');
 
 const client = redis.createClient();
-
+const argv = yargs
+    .option('interface', {
+        alias: 'i',
+        description: 'select interface',
+        type: 'string',
+        required: true
+    })
+    .help()
+    .alias('help', 'h')
+    .argv;
 const writeThroughCache = () =>{
     return new Promise((resolve,reject)=>{
-        exec(`sudo ndpiReader -C test.csv -P 4:8:10:128:25 -i $(iw dev | awk '$1=="Interface"{print $2}') -s 10`,(err,stdout,stderr)=>{
+        exec(`sudo ndpiReader -C test.csv -P 4:8:10:128:25 -i ${argv.interface} -s 10`,(err,stdout,stderr)=>{
             console.log("start")
             let i = 0;
             fs.createReadStream("test.csv")
@@ -30,4 +39,7 @@ const service = ()=>{
         writeThroughCache().then(console.log).catch(console.log)
     },10000)
 }
-service()
+
+
+if(argv.interface) service()
+else console.log('Please Select Network Interface')
