@@ -5,5 +5,4 @@ polarproxy/
 *.pem
 *.zip
 *.csv
-nDPI/
 env
