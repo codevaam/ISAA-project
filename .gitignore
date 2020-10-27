@@ -7,3 +7,4 @@ polarproxy/
 *.csv
 env
 *_data
+node_modules

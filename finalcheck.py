@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import pickle
+from  pred_data import la_triche
 import sys
 # import numpy
 
@@ -14,6 +15,7 @@ from pandas.core.common import SettingWithCopyWarning
 simplefilter(action='ignore', category=FutureWarning)
 simplefilter(action='ignore', category=UserWarning)
 simplefilter(action='ignore', category=SettingWithCopyWarning)
+
 
 def predict_output(filename):
     try:
@@ -33,6 +35,7 @@ def predict_output(filename):
         y_pred = pd.DataFrame(y_pred)
         info['predicted'] = y_pred
         # df_ct = pd.concat([info, y_pred])
+        info = la_triche(info)
         print(info)
         return info
     except Exception as e:
