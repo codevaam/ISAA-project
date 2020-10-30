@@ -36,6 +36,7 @@ def predict_output(filename):
         info['predicted'] = y_pred
         # df_ct = pd.concat([info, y_pred])
         info = la_triche(info)
+        info.to_csv('final.csv')
         print(info)
         return info
     except Exception as e:

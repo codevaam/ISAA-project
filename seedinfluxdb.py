@@ -4,10 +4,14 @@ from convertCSV import replaceNull
 
 while True:
     try:
-        if(os.path.isfile('tardigate-data-collector/nDP/debug.csv')):
-            replaceNull('tardigate-data-collector/nDP/debug.csv')
+        # if(os.path.isfile('./data-collectors/nDPI/debug.csv')):
+        #     print('seeding')
+        #     replaceNull('./data-collectors/nDPI/debug.csv')
             # temporary tags and fields choosen
-            os.system('export_csv_to_influx -c debug.csv -db _internal -m ndpi_proto -fc ddos_score,infiltration_score,src_ip,dst_ip -tc ndpi_proto')
+        if(os.path.isfile('./final.csv')):
+            print('seeding')
+            replaceNull('./final.csv')
+            os.system('export_csv_to_influx -c final.csv -db _internal -m ndpi_proto -fc src_ip,dst_ip,predicted -tc ndpi_proto')
             os.remove('test_influx.csv')
     except:
         print('skip')
