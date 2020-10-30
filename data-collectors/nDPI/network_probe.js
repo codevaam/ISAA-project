@@ -16,7 +16,7 @@ const argv = yargs
     .argv;
 const writeThroughCache = () =>{
     return new Promise((resolve,reject)=>{
-        exec(`sudo ndpiReader -C debug.csv -P 4:8:10:128:25 -i ${argv.interface} -s 10`,(err,stdout,stderr)=>{
+        exec(`sudo ndpiReader -C debug.csv -P 4:8:10:128:25 -i ${argv.interface} -s 5`,(err,stdout,stderr)=>{
             console.log("Dumping")
             let i = 0;
             fs.createReadStream("debug.csv")
