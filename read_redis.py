@@ -26,7 +26,7 @@ def subscription_loop():
             except Exception as e:
                 print(e, 'Trying old data')
                 try:
-                    read_and_decode_from_redis(message)
+                    read_and_decode_from_redis(last)
                     time.sleep(10)
                     flow_classify("debug.csv")
                 except Exception as e:
